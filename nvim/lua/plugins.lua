@@ -1,54 +1,79 @@
 return require('packer').startup(function()
-   use 'wbthomason/packer.nvim'
-   use {
-     'kyazdani42/nvim-tree.lua',
-     requires = 'kyazdani42/nvim-web-devicons'
-  }
+  
+  ------------------ Packer ---------------------------
+  use 'wbthomason/packer.nvim'
 
-  use 'neovim/nvim-lspconfig' 
+  ------------------ Theming ---------------------------
+  use {
+	  'kyazdani42/nvim-tree.lua',
+	  requires = 'kyazdani42/nvim-web-devicons'
+  }
 
   use 'morhetz/gruvbox'
   use 'folke/tokyonight.nvim'
 
   use {
-   "hrsh7th/nvim-cmp",
+	'hoob3rt/lualine.nvim',
+	requires = {'kyazdani42/nvim-web-devicons', opt = true}
+  }
+
+  ------------------ Navigation -----------------------
+
+  use 'easymotion/vim-easymotion'
+  use 'christoomey/vim-tmux-navigator'
+  use 'nvim-telescope/telescope-media-files.nvim'
+
+  use {
+	'nvim-telescope/telescope.nvim',
+	requires = { {'nvim-lua/plenary.nvim'} }
+  }
+
+  ------------------ Intelligence ---------------------
+
+  use {
+   'hrsh7th/nvim-cmp',
    requires = {
-     "hrsh7th/vim-vsnip",
-     "hrsh7th/cmp-buffer",
+     'hrsh7th/vim-vsnip',
+     'hrsh7th/cmp-buffer',
    }
   }
 
-  use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
-  use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp 
-  use 'L3MON4D3/LuaSnip' -- Snippets plugin
-
-  use 'mattn/emmet-vim'
+  use {
+	'neoclide/coc.nvim',
+	branch = 'release'
+  }
 
   use {
-   'hoob3rt/lualine.nvim',
-   requires = {'kyazdani42/nvim-web-devicons', opt = true}
- }
+	"dense-analysis/ale"
+  }
 
- use {
-  'nvim-telescope/telescope.nvim',
-  requires = { {'nvim-lua/plenary.nvim'} }
- }
+  use 'mattn/emmet-vim'
+  
+  use {
+	'prettier/vim-prettier',
+    run = 'yarn install',
+    ft = {
+	  'javascript',
+	  'typescript', 
+	  'css', 
+	  'less', 
+	  'scss', 
+	  'graphql', 
+	  'markdown', 
+	  'vue', 
+	  'html'
+	}
+  }
 
- use 'valloric/matchtagalways'
+  use 'valloric/matchtagalways'
 
- use 'easymotion/vim-easymotion'
- use 'christoomey/vim-tmux-navigator'
+  use 'nvim-lua/popup.nvim'
 
- use 'nvim-lua/popup.nvim'
- use 'nvim-telescope/telescope-media-files.nvim'
+  use 'windwp/nvim-autopairs'
 
- use 'windwp/nvim-autopairs'
+  use 'terrortylor/nvim-comment'
 
- use 'terrortylor/nvim-comment'
+  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
- use 'glepnir/lspsaga.nvim'
-
- use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-
- use 'OmniSharp/omnisharp-vim'
+  use 'OmniSharp/omnisharp-vim'
 end)
