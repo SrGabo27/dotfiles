@@ -24,12 +24,14 @@ let g:ale_linters = {
       \'cs': ['OmniSharp'],
       \}
 let g:ale_fixers = {
-      \'javascript': ['eslint'],
+      \'javascript': ['prettier'],
       \'typescript': ['prettier'],
       \'python': ['black','yapf'],
       \'html': ['prettier'],
       \'cs': ['uncrustify'],
       \'css': ['prettier'],
+      \'typescriptreact': ['prettier'],
+      \'javascriptreact': ['prettier'],
       \}
 
 set statusline=%{LinterStatus()}

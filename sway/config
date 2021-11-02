@@ -4,12 +4,10 @@
 #
 # Read `man 5 sway` for a complete reference.
 #
-
-
 default_border none
 
-
 exec mako
+
 
 ### Variables
 #
@@ -37,7 +35,7 @@ bindsym $mod+Control+Shift+Up move workspace to output up
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+output * bg ~/Pictures/Wallpapers/viking-above-clouds-1600×900.jpg fill
 #
 # Example configuration:
 #
@@ -134,7 +132,8 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
     bindsym $mod+7 workspace number 7
     bindsym $mod+8 workspace number 8
     bindsym $mod+9 workspace number 9
-    bindsym $mod+0 workspace number 10
+    bindsym $mod+0 exec swaylock-fancy -p
+    
     # Move focused container to workspace
     bindsym $mod+Shift+1 move container to workspace number 1
     bindsym $mod+Shift+2 move container to workspace number 2
@@ -220,10 +219,10 @@ bar {
 
 # Font, borders, and gaps 
     font pango:Cantarell 10
-    gaps inner 7 
-    gaps outer 7 
-    gaps top 6
-    gaps bottom 6
+    gaps inner 7
+    gaps outer 7
+    gaps top 5
+    gaps bottom 5
     default_border pixel 2
     default_floating_border pixel 2
 
@@ -247,5 +246,10 @@ bar {
     exec swaymsg "workspace 1; exec alacritty;"
     exec swaymsg "workspace 2; exec firefox;"
     exec swaymsg "workspace 3; exec spotify;"
+
+bindsym Print exec /usr/bin/sway-interactive-screenshot
+
+set $opacity 0.9
+for_window [class="alacritty"] opacity $opacity
 
 include /etc/sway/config.d/*

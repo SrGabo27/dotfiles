@@ -56,3 +56,5 @@ colors:
 font:
   normal:
     family: Jetbrains Mono
+
+background_opacity: 0.9
