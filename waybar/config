@@ -47,6 +47,11 @@
 			"2": "",
 			"3": "阮",
 			"4": "",
+			"5": "",
+			"6": "",
+			"7": "",
+			"8": "",
+			"9": "力",
 		}
 	},
 
@@ -100,9 +105,9 @@
         	"format-alt": "{ipaddr}/{cidr} {icon}",
         	"format-alt-click": "click-right",
         	"format-icons": {
-            		"wifi": ["", "" ,""],
-            		"ethernet": [""],
-            		"disconnected": [""]
+            		"wifi": [""],
+            		"ethernet": [""],
+            		"disconnected": ["��"]
         	},
         	"on-click": "termite -e nmtui",
     		"tooltip": false
