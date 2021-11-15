@@ -32,7 +32,7 @@ bindsym $mod+Control+Shift+Up move workspace to output up
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg ~/Pictures/Wallpapers/viking-above-clouds-1600×900.jpg fill
+output * bg ~/Images/Wallpapers/3.jpg fill
 #
 # Example configuration:
 #
