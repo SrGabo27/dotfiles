@@ -3,7 +3,6 @@
 {
 	"layer": "top",
 	"position": "top",
-
 	"modules-left": [
 		"sway/workspaces",
 		"custom/right-arrow-dark"
@@ -11,34 +10,17 @@
 	"modules-center": [
 		"custom/left-arrow-dark",
 		"clock#1",
-		"custom/left-arrow-light",
-		"custom/left-arrow-dark",
 		"clock#2",
-		"custom/right-arrow-dark",
-		"custom/right-arrow-light",
 		"clock#3",
 		"custom/right-arrow-dark"
 	],
 	"modules-right": [
 		"custom/left-arrow-dark",
 		"pulseaudio",
-		"custom/left-arrow-light",
-		"custom/left-arrow-dark",
-		"memory",
-		"custom/left-arrow-light",
-		"custom/left-arrow-dark",
-		"cpu",
-		"custom/left-arrow-light",
-		"custom/left-arrow-dark",
 		"battery",
-		"custom/left-arrow-light",
-		"custom/left-arrow-dark",
-		"disk",
-		"custom/left-arrow-light",
-		"custom/left-arrow-dark",
-		"tray"
+		"tray",
+		"network",
 	],
-
 	"custom/left-arrow-dark": {
 		"format": "",
 		"tooltip": false
@@ -58,7 +40,14 @@
 
 	"sway/workspaces": {
 		"disable-scroll": true,
-		"format": "{name}"
+		"format": " {icon} ",
+		"disable-markup": false,
+		"format-icons": {
+			"1": "ﲵ",
+			"2": "",
+			"3": "阮",
+			"4": "",
+		}
 	},
 
 	"clock#1": {
@@ -73,44 +62,30 @@
 		"format": "{:%m-%d}",
 		"tooltip": false
 	},
-
 	"pulseaudio": {
-		"format": "{icon} {volume:2}%",
-		"format-bluetooth": "{icon}  {volume}%",
-		"format-muted": "MUTE",
-		"format-icons": {
-			"headphones": "",
-			"default": [
-				"墳",
-				"墳"
-			]
-		},
-		"scroll-step": 5,
-		"on-click": "pamixer -t",
-		"on-click-right": "pavucontrol"
-	},
-	"memory": {
-		"interval": 5,
-		"format": "Mem {}%"
-	},
-	"cpu": {
-		"interval": 5,
-		"format": "CPU {usage:2}%"
+		"format": "{icon}",
+        	"format-alt": "{volume} {icon}",
+        	"format-alt-click": "click-right",
+        	"format-muted": "",
+        	"format-icons": {
+            		"phone": [" ", " ", " ", " "],
+            		"default": ["", "", "", ""]
+       		 },
+        	"scroll-step": 10,
+        	"on-click": "pavucontrol",
+        	"tooltip": false
 	},
 	"battery": {
-		"states": {
-			"good": 95,
-			"warning": 30,
-			"critical": 15
-		},
-		"format": "{icon} {capacity}%",
-		"format-icons": [
-			"",
-			"",
-			"",
-			"",
-			""
-		]
+		"format": "{capacity}% {icon}",
+        	"format-alt": "{time} {icon}",
+        	"format-icons": ["", "", "", "", ""],
+        	"format-charging": "{capacity}% ",
+        	"interval": 30,
+        	"states": {
+            		"warning": 25,
+            		"critical": 10
+        	},
+        	"tooltip": false
 	},
 	"disk": {
 		"interval": 5,
@@ -119,5 +94,17 @@
 	},
 	"tray": {
 		"icon-size": 20
-	}
+	},
+	"network": {
+        	"format": "{icon}",
+        	"format-alt": "{ipaddr}/{cidr} {icon}",
+        	"format-alt-click": "click-right",
+        	"format-icons": {
+            		"wifi": ["", "" ,""],
+            		"ethernet": [""],
+            		"disconnected": [""]
+        	},
+        	"on-click": "termite -e nmtui",
+    		"tooltip": false
+    	},
 }

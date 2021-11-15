@@ -8,7 +8,6 @@ default_border none
 
 exec mako
 
-
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
@@ -25,12 +24,10 @@ set $term alacritty
 # on the original workspace that the command was run on.
 set $menu wofi --show run 
 
-
 bindsym $mod+Control+Shift+Right move workspace to output right
 bindsym $mod+Control+Shift+Left move workspace to output left
 bindsym $mod+Control+Shift+Down move workspace to output down
 bindsym $mod+Control+Shift+Up move workspace to output up
-
 
 ### Output configuration
 #

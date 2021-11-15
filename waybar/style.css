@@ -1,6 +1,6 @@
 * {
-  font-size: 20px;
-  font-family: monospace;
+  font-size: 19px;
+  font-family: Jetbrains Mono;
 }
 
 window#waybar {
@@ -27,12 +27,14 @@ window#waybar {
 #cpu,
 #battery,
 #disk,
-#tray {
+#tray,
+#network
+{
   background: #1a1a1a;
 }
 
 #workspaces button {
-  padding: 0 2px;
+  padding: 0 1px;
   color: #fdf6e3;
 }
 #workspaces button.focused {
@@ -63,12 +65,17 @@ window#waybar {
 #disk {
   color: #b58900;
 }
+#network {
+ color: white;
+}
 
 #clock,
 #pulseaudio,
 #memory,
 #cpu,
 #battery,
-#disk {
+#disk,
+#network
+{
   padding: 0 10px;
 }
