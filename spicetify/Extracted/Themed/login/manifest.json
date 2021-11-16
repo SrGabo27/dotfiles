@@ -2,7 +2,7 @@
   "BundleType": "Application",
   "VendorIdentifier": "com.spotify",
   "BundleIdentifier": "login",
-  "BundleVersion": "1.1.68",
+  "BundleVersion": "1.1.72",
   "UserInstallable": false,
   "AppName": {
     "ar": "login",
@@ -60,5 +60,5 @@
     "zh-Hant",
     "ms"
   ],
-  "GitRevision": "2b11de83cca"
+  "GitRevision": "c253025e796"
 }

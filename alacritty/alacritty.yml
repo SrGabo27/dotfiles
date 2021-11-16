@@ -54,6 +54,7 @@ colors:
     cyan: '#95E6CB'
     white: '#FFFFFF'
 font:
+  size: 9.0
   normal:
     family: Jetbrains Mono
 
