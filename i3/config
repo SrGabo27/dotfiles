@@ -7,8 +7,11 @@
 # i3 config file (v4)
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
+
 # Picom
 exec_always --no-startup-id picom --experimental-backend
+
+# Polybar themes
 exec_always --no-startup-id bash ~/.config/polybar/launch.sh --blocks
 
 set $mod Mod1
@@ -26,7 +29,7 @@ font pango:Jetbrains Mono 8
 exec --no-startup-id dex --autostart --environment i3
 
 # Background img
-exec --no-startup-id nitrogen --set-auto ~/Images/Wallpapers/3.jpg --head=0
+exec --no-startup-id nitrogen --set-auto ~/.config/Images/Wallpapers/3.jpg --head=0
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
