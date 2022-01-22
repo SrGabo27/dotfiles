@@ -11,6 +11,9 @@
 # Picom
 exec_always --no-startup-id picom --experimental-backend
 
+# Ulauncher
+exec_always --no-startup-id ulauncher
+
 # Polybar themes
 exec_always --no-startup-id bash ~/.config/polybar/launch.sh --blocks
 
@@ -29,7 +32,10 @@ font pango:Jetbrains Mono 8
 exec --no-startup-id dex --autostart --environment i3
 
 # Background img
-exec --no-startup-id nitrogen --set-auto ~/.config/Images/Wallpapers/3.jpg --head=0
+exec --no-startup-id nitrogen --set-auto ~/.config/Images/Wallpapers/3.jpg --head=0 && nitrogen --set-auto ~/.config/Images/Wallpapers/4.jpg --head=1
+
+# exec "setxkbmap -layout us,es"
+# exec "setxkbmap -option 'grp:alt_shift_toggle'"
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -59,7 +65,9 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id rofi -show drun
+# bindsym $mod+d exec --no-startup-id rofi -show drun
+bindsym $mod+d exec --no-startup-id ulauncher-toggle
+
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
@@ -198,6 +206,9 @@ bindsym $mod+r mode "resize"
 
 # Remove borders and title 
 for_window [class="^.*"] border pixel 0
+
+# Moving workspaces between screens 
+bindsym $mod+p move workspace to output right
 
 gaps inner 10
 gaps outer 7

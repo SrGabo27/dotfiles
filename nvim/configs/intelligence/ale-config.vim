@@ -25,13 +25,14 @@ let g:ale_linters = {
       \}
 let g:ale_fixers = {
       \'javascript': ['prettier'],
-      \'typescript': ['prettier'],
+      \'typescript': [],
       \'python': ['black','yapf'],
-      \'html': ['prettier'],
+      \'html': [],
       \'cs': ['uncrustify'],
       \'css': ['prettier'],
       \'typescriptreact': ['prettier'],
       \'javascriptreact': ['prettier'],
+      \'vue': ['prettier'],
       \}
 
 set statusline=%{LinterStatus()}

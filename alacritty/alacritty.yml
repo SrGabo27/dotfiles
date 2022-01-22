@@ -56,6 +56,6 @@ colors:
 font:
   size: 9.0
   normal:
-    family: Jetbrains Mono
+    family: Cascadia Code 
 
 background_opacity: 0.9
