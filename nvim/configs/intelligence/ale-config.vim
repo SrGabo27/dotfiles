@@ -25,9 +25,9 @@ let g:ale_linters = {
       \}
 let g:ale_fixers = {
       \'javascript': ['prettier'],
-      \'typescript': [],
+      \'typescript': ['prettier'],
       \'python': ['black','yapf'],
-      \'html': [],
+      \'html': ['prettier'],
       \'cs': ['uncrustify'],
       \'css': ['prettier'],
       \'typescriptreact': ['prettier'],
