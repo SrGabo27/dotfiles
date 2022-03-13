@@ -1,7 +1,0 @@
-{"imdb_id":"tt11271038","type":"movie","_id":"6I29veW10e3TkMd7"}
-{"imdb_id":"tt1825683","type":"movie","_id":"NUozWythIAeMQArI"}
-{"imdb_id":"tt8531222","type":"show","_id":"Wt1AyIYMtRZBTpiZ"}
-{"imdb_id":"tt8772296","type":"show","_id":"cQZPowPCIQl1nZdq"}
-{"imdb_id":"tt13146488","type":"show","_id":"jPb4miMaiViTciE2"}
-{"imdb_id":"tt8847712","type":"movie","_id":"lUUh9onoYBGZO4qG"}
-{"$$indexCreated":{"fieldName":"imdb_id","unique":true,"sparse":false}}
