@@ -17,6 +17,9 @@ exec_always --no-startup-id ulauncher
 # Polybar themes
 exec_always --no-startup-id bash ~/.config/polybar/launch.sh --blocks
 
+# Screen Layout
+exec_always --no-startup-id ~/.config/autoxrandr.sh
+
 set $mod Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -32,7 +35,7 @@ font pango:Jetbrains Mono 8
 exec --no-startup-id dex --autostart --environment i3
 
 # Background img
-exec --no-startup-id nitrogen --set-auto ~/.config/Images/Wallpapers/3.jpg --head=0 && nitrogen --set-auto ~/.config/Images/Wallpapers/4.jpg --head=1
+exec --no-startup-id nitrogen --set-auto ~/.config/Images/Wallpapers/knight-forest.jpg --head=0 && nitrogen --set-auto ~/.config/Images/Wallpapers/knight-forest.jpg --head=1
 
 # exec "setxkbmap -layout us,es"
 # exec "setxkbmap -option 'grp:alt_shift_toggle'"
