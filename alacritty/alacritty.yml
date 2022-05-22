@@ -64,5 +64,5 @@ font:
   normal:
     family: Cascadia Code
 
-background_opacity: 0.9
+window.opacity: 0.9
 theme: Tokyonight_Storm
