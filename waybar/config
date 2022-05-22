@@ -37,7 +37,6 @@
 		"format": "",
 		"tooltip": false
 	},
-
 	"sway/workspaces": {
 		"disable-scroll": true,
 		"format": " {icon} ",
@@ -45,16 +44,15 @@
 		"format-icons": {
 			"1": "ﲵ",
 			"2": "",
-			"3": "阮",
-			"4": "",
-			"5": "聆",
-			"6": "",
+			"3": "聆",
+			"4": "",
+			"5": "阮",
+			"6": "",
 			"7": "",
 			"8": "",
 			"9": "力",
 		}
 	},
-
 	"clock#1": {
 		"format": "{:%a}",
 		"tooltip": false
@@ -107,7 +105,7 @@
         	"format-icons": {
             		"wifi": [""],
             		"ethernet": [""],
-            		"disconnected": ["��"]
+            		"disconnected": ["��"]
         	},
         	"on-click": "termite -e nmtui",
     		"tooltip": false

@@ -1,0 +1,119 @@
+2022-04-20 13:46:47,526 DEBUG    root            Loaded Command Group: ['gcloud', 'builds']
+2022-04-20 13:46:47,569 DEBUG    root            Loaded Command Group: ['gcloud', 'builds', 'submit']
+2022-04-20 13:46:47,588 DEBUG    root            Running [gcloud.builds.submit] with arguments: [--async: "True", --config: "cloudbuild-deploy.yaml", --project: "chasecenter-com", --substitutions: "OrderedDict([('_SERVICE', 'chasecenter-com-ng'), ('_BUILD_ID', 'c0128085-4f80-4c99-84dc-3b0734f77fc6')])", SOURCE: "./assets"]
+2022-04-20 13:46:47,739 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): storage.googleapis.com:443
+2022-04-20 13:46:48,164 DEBUG    urllib3.connectionpool https://storage.googleapis.com:443 "GET /storage/v1/b/chasecenter-com_cloudbuild?alt=json HTTP/1.1" 200 653
+2022-04-20 13:46:48,384 DEBUG    urllib3.connectionpool https://storage.googleapis.com:443 "GET /storage/v1/b?alt=json&maxResults=1000&prefix=chasecenter-com_cloudbuild&project=chasecenter-com HTTP/1.1" 200 799
+2022-04-20 13:46:48,388 INFO     root            Not using ignore file.
+2022-04-20 13:46:48,388 INFO     ___FILE_ONLY___ Creating temporary tarball archive of 1 file(s) totalling 0 before compression.
+
+2022-04-20 13:46:48,392 DEBUG    root            Added [empty.file]
+2022-04-20 13:46:48,393 INFO     ___FILE_ONLY___ Uploading tarball of [./assets] to [gs://chasecenter-com_cloudbuild/source/1650476807.736037-5b0c37fa5ddc46e49f9520a7d8346a1c.tgz]
+
+2022-04-20 13:46:48,416 INFO     root            Uploading [/tmp/tmp3mb22riy/file.tgz] to [chasecenter-com_cloudbuild/source/1650476807.736037-5b0c37fa5ddc46e49f9520a7d8346a1c.tgz]
+2022-04-20 13:46:48,699 DEBUG    urllib3.connectionpool https://storage.googleapis.com:443 "POST /upload/storage/v1/b/chasecenter-com_cloudbuild/o?alt=json&name=source%2F1650476807.736037-5b0c37fa5ddc46e49f9520a7d8346a1c.tgz&uploadType=multipart HTTP/1.1" 200 1001
+2022-04-20 13:46:48,701 DEBUG    root            submitting build: <Build
+ images: []
+ secrets: [<Secret
+ kmsKeyName: 'projects/dev-chasecenter-com/locations/global/keyRings/devops-keyring/cryptoKeys/bitbucket-key'
+ secretEnv: <SecretEnvValue
+ additionalProperties: [<AdditionalProperty
+ key: 'SLACK_WEBHOOK'
+ value: b'\n$\x00\xbe\xd7\x0eLC\x94\xbe\x8a\xc3#\n(H\x9d\x19}\xd4Qq\xab|x0\x18~\x0e|\x9cq*x\x07\xe5V\xb0\x12y\x006(\x1e)\x7f\x98\x1d\xb2\x81\xb7_\xb9\x8f\xb4j}\t|\xd8\xdb\xef:i\xb5\x0b/\xd3\xb3\xdb\xfe\xd9\xe4\xe8\xa5\x02f\xdeC\x8f\xf1zYw\xc0"\xc4\x97\xb2\xf4\x8a\xde\xfb0\xd1\xc9m\xbf\x96]\x1c\xe7\x7f\xe4\x1a\xd1\xcf\xf0\x12\xa6\xe4\x87\xbb\xe5\xa6\xa6\xc7w\x9bm\x11\xa5\xeb8!\x8a\x11\xa9\xd3gcg\xcf\xd6\xcdl\x01\xd6\xc9KP/\xb3\x97\x1c\xbc\xba)\xe9\xab\xe4u?]B@\xd1R\xf7\x8f\xe9'>]>>]
+ source: <Source
+ storageSource: <StorageSource
+ bucket: 'chasecenter-com_cloudbuild'
+ generation: 1650476808607507
+ object: 'source/1650476807.736037-5b0c37fa5ddc46e49f9520a7d8346a1c.tgz'>>
+ steps: [<BuildStep
+ args: ['cp', 'gs://chasecenter-com-web-build-artifacts/${_SERVICE}/${_SERVICE}-${_BUILD_ID}.tgz', '${_SERVICE}-${_BUILD_ID}.tgz']
+ env: []
+ name: 'gcr.io/cloud-builders/gsutil'
+ secretEnv: []
+ volumes: []
+ waitFor: []>, <BuildStep
+ args: ['cp', 'gs://chasecenter-com-web-build-artifacts/slack.sh', 'slack.sh']
+ env: []
+ name: 'gcr.io/cloud-builders/gsutil'
+ secretEnv: []
+ volumes: []
+ waitFor: []>, <BuildStep
+ args: ['tar', 'xvfz', '${_SERVICE}-${_BUILD_ID}.tgz']
+ env: []
+ name: 'ubuntu'
+ secretEnv: []
+ volumes: []
+ waitFor: []>, <BuildStep
+ args: ['-c', "cp .deploy/app-engine/$PROJECT_ID/app.yaml .deploy/app.yaml\nsed -i s/##BUILD_INFO##/$BUILD_ID,$PROJECT_ID/g .deploy/app.yaml        \ncp .deploy/config/$PROJECT_ID/environment.js .deploy/dist/browser/assets/environment.js || true\ncp .deploy/config/$PROJECT_ID/environment.js .deploy/dist/environment.js || true\necho '****************'\ncat slack.sh\n"]
+ entrypoint: 'bash'
+ env: []
+ name: 'ubuntu'
+ secretEnv: []
+ volumes: []
+ waitFor: []>, <BuildStep
+ args: ['app', 'deploy', '--verbosity=debug']
+ dir: '.deploy'
+ env: []
+ name: 'gcr.io/cloud-builders/gcloud'
+ secretEnv: []
+ volumes: []
+ waitFor: []>, <BuildStep
+ args: ['slack.sh']
+ entrypoint: 'bash'
+ env: ['BUILD_ID=$BUILD_ID', 'PROJECT_ID=$PROJECT_ID', 'SERVICE=${_SERVICE}', 'DEPLOYED_BUILD=${_BUILD_ID}']
+ name: 'gcr.io/cloud-builders/curl'
+ secretEnv: ['SLACK_WEBHOOK']
+ volumes: []
+ waitFor: []>]
+ substitutions: <SubstitutionsValue
+ additionalProperties: [<AdditionalProperty
+ key: '_BUILD_ID'
+ value: 'c0128085-4f80-4c99-84dc-3b0734f77fc6'>, <AdditionalProperty
+ key: '_SERVICE'
+ value: 'chasecenter-com-ng'>]>
+ tags: ['${_SERVICE}', '${_BUILD_ID}']
+ timeout: '1200s'
+ warnings: []>
+2022-04-20 13:46:48,727 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): cloudbuild.googleapis.com:443
+2022-04-20 13:46:50,098 DEBUG    urllib3.connectionpool https://cloudbuild.googleapis.com:443 "POST /v1/projects/chasecenter-com/locations/global/builds?alt=json HTTP/1.1" 200 None
+2022-04-20 13:46:50,117 INFO     ___FILE_ONLY___ Created [https://cloudbuild.googleapis.com/v1/projects/chasecenter-com/locations/global/builds/d540681d-868a-41ad-91f4-651160369181].
+
+2022-04-20 13:46:50,117 INFO     ___FILE_ONLY___ Logs are available at [https://console.cloud.google.com/cloud-build/builds/d540681d-868a-41ad-91f4-651160369181?project=1096919057808].
+
+2022-04-20 13:46:50,119 INFO     root            Display format: "
+        table(
+          id,
+          createTime.date('%Y-%m-%dT%H:%M:%S%Oz', undefined='-'),
+          duration(start=startTime,end=finishTime,precision=0,calendar=false,undefined="  -").slice(2:).join(""):label=DURATION,
+          build_source(undefined="-"):label=SOURCE,
+          build_images(undefined="-"):label=IMAGES,
+          status
+        )
+      "
+2022-04-20 13:46:50,133 INFO     ___FILE_ONLY___ ID
+2022-04-20 13:46:50,134 INFO     ___FILE_ONLY___                                     
+2022-04-20 13:46:50,134 INFO     ___FILE_ONLY___ CREATE_TIME
+2022-04-20 13:46:50,134 INFO     ___FILE_ONLY___                 
+2022-04-20 13:46:50,134 INFO     ___FILE_ONLY___ DURATION
+2022-04-20 13:46:50,134 INFO     ___FILE_ONLY___   
+2022-04-20 13:46:50,134 INFO     ___FILE_ONLY___ SOURCE
+2022-04-20 13:46:50,135 INFO     ___FILE_ONLY___                                                                                          
+2022-04-20 13:46:50,135 INFO     ___FILE_ONLY___ IMAGES
+2022-04-20 13:46:50,135 INFO     ___FILE_ONLY___   
+2022-04-20 13:46:50,135 INFO     ___FILE_ONLY___ STATUS
+2022-04-20 13:46:50,135 INFO     ___FILE_ONLY___ 
+
+2022-04-20 13:46:50,135 INFO     ___FILE_ONLY___ d540681d-868a-41ad-91f4-651160369181
+2022-04-20 13:46:50,135 INFO     ___FILE_ONLY___   
+2022-04-20 13:46:50,135 INFO     ___FILE_ONLY___ 2022-04-20T17:46:49+00:00
+2022-04-20 13:46:50,135 INFO     ___FILE_ONLY___   
+2022-04-20 13:46:50,135 INFO     ___FILE_ONLY___ -
+2022-04-20 13:46:50,135 INFO     ___FILE_ONLY___          
+2022-04-20 13:46:50,135 INFO     ___FILE_ONLY___ gs://chasecenter-com_cloudbuild/source/1650476807.736037-5b0c37fa5ddc46e49f9520a7d8346a1c.tgz
+2022-04-20 13:46:50,135 INFO     ___FILE_ONLY___   
+2022-04-20 13:46:50,135 INFO     ___FILE_ONLY___ -
+2022-04-20 13:46:50,136 INFO     ___FILE_ONLY___        
+2022-04-20 13:46:50,136 INFO     ___FILE_ONLY___ QUEUED
+2022-04-20 13:46:50,136 INFO     ___FILE_ONLY___ 
+
+2022-04-20 13:46:50,136 DEBUG    root            SDK update checks are disabled.

@@ -20,6 +20,9 @@ exec_always --no-startup-id bash ~/.config/polybar/launch.sh --blocks
 # Screen Layout
 exec_always --no-startup-id ~/.config/autoxrandr.sh
 
+# Low Battery notification
+exec --no-startup-id i3-battery-popup
+
 set $mod Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font

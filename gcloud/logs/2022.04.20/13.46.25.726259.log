@@ -1,0 +1,32 @@
+2022-04-20 13:46:25,729 DEBUG    root            Loaded Command Group: ['gcloud', 'builds']
+2022-04-20 13:46:25,785 DEBUG    root            Loaded Command Group: ['gcloud', 'builds', 'submit']
+2022-04-20 13:46:25,814 DEBUG    root            Running [gcloud.builds.submit] with arguments: [--async: "True", --config: "cloudbuild-deploy.yaml", --project: "chasecenter-com", --substitutions: "OrderedDict([('_SERVICE', 'chasecenter-com-ng'), ('_BUILD_ID', 'c0128085-4f80-4c99-84dc-3b0734f77fc6')])", SOURCE: "./assets"]
+2022-04-20 13:46:25,815 DEBUG    root            (gcloud.builds.submit) Unable to read file [cloudbuild-deploy.yaml]: [Errno 2] No such file or directory: 'cloudbuild-deploy.yaml'
+Traceback (most recent call last):
+  File "/opt/google-cloud-sdk/lib/googlecloudsdk/core/util/files.py", line 1248, in _FileOpener
+    return io.open(path, mode, encoding=encoding, newline=newline)
+FileNotFoundError: [Errno 2] No such file or directory: 'cloudbuild-deploy.yaml'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/google-cloud-sdk/lib/googlecloudsdk/calliope/cli.py", line 987, in Execute
+    resources = calliope_command.Run(cli=self, args=args)
+  File "/opt/google-cloud-sdk/lib/googlecloudsdk/calliope/backend.py", line 809, in Run
+    resources = command_instance.Run(args)
+  File "/opt/google-cloud-sdk/lib/surface/builds/submit.py", line 154, in Run
+    build_config = submit_util.CreateBuildConfig(
+  File "/opt/google-cloud-sdk/lib/googlecloudsdk/command_lib/builds/submit_util.py", line 437, in CreateBuildConfig
+    build_config = _SetBuildSteps(tag, no_cache, messages, substitutions,
+  File "/opt/google-cloud-sdk/lib/googlecloudsdk/command_lib/builds/submit_util.py", line 206, in _SetBuildSteps
+    build_config = config.LoadCloudbuildConfigFromPath(
+  File "/opt/google-cloud-sdk/lib/googlecloudsdk/api_lib/cloudbuild/config.py", line 152, in LoadCloudbuildConfigFromPath
+    build = cloudbuild_util.LoadMessageFromPath(
+  File "/opt/google-cloud-sdk/lib/googlecloudsdk/api_lib/cloudbuild/cloudbuild_util.py", line 410, in LoadMessageFromPath
+    with files.FileReader(path) as f:  # Returns user-friendly error messages
+  File "/opt/google-cloud-sdk/lib/googlecloudsdk/core/util/files.py", line 1167, in FileReader
+    return _FileOpener(path, 'rt', 'read', encoding='utf-8')
+  File "/opt/google-cloud-sdk/lib/googlecloudsdk/core/util/files.py", line 1255, in _FileOpener
+    raise exc_type('Unable to {0} file [{1}]: {2}'.format(verb, path, e))
+googlecloudsdk.core.util.files.MissingFileError: Unable to read file [cloudbuild-deploy.yaml]: [Errno 2] No such file or directory: 'cloudbuild-deploy.yaml'
+2022-04-20 13:46:25,816 ERROR    root            (gcloud.builds.submit) Unable to read file [cloudbuild-deploy.yaml]: [Errno 2] No such file or directory: 'cloudbuild-deploy.yaml'

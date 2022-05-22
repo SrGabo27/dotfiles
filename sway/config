@@ -35,7 +35,7 @@ bindsym $mod+Control+Shift+Up move workspace to output up
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg ~/Images/Wallpapers/3.jpg fill
+output * bg ~/.config/Images/Wallpapers/cold_dragon.jpg fill 
 #
 # Example configuration:
 #
@@ -206,6 +206,7 @@ mode "resize" {
     # Return to default mode
     bindsym Return mode "default"
     bindsym Escape mode "default"
+    
 }
 bindsym $mod+r mode "resize"
 
@@ -221,8 +222,8 @@ bar {
     font pango:Cantarell 10
     gaps inner 7
     gaps outer 7
-    gaps top 5
-    gaps bottom 5
+    gaps top 7
+    gaps bottom 7
     default_border pixel 2
     default_floating_border pixel 2
 
@@ -235,17 +236,23 @@ bar {
     client.urgent #4C566A #434c5e #eceff4 #434c5e #434c5e
 
 # Assign Workspace opens
-    assign [class="firefox"] → workspace 2
-    assign [class="alacritty"] → workspace ace 1
-    assign [class="spotify"] → workspace ace 3
+    assign [class="alacritty"] → workspace 1
+    assign [class="spotify"] → workspace 3
+    assign [class="teams"] → workspace 4
 
 # Add opacity to unmanaged applications
     for_window [app_id="subl"] opacity 0.9
 
 # Autostart applications per workspace
     exec swaymsg "workspace 1; exec alacritty;"
-    exec swaymsg "workspace 2; exec firefox;"
-    exec swaymsg "workspace 3; exec spotify;"
+    exec swaymsg "workspace 2; exec vivaldi;"
+    exec swaymsg "workspace 3; exec slack;"
+    exec swaymsg "workspace 4; exec teams;"
+    exec swaymsg "workspace 5; exec spotify;"
+    exec swaymsg "workspace 6; exec thunar;"
+
+# move focused workspace between monitors
+  bindsym $mod+p move workspace to output right
 
 bindsym Print exec /usr/bin/sway-interactive-screenshot
 
